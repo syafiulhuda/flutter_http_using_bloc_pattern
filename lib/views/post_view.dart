@@ -10,8 +10,10 @@ class PostView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ! Mengakses "instance" CreateDataBloc dari context
     CreateDataBloc createDataBloc = context.read<CreateDataBloc>();
 
+    // ! Controller untuk text field
     TextEditingController nameController = TextEditingController();
     TextEditingController jobController = TextEditingController();
 
@@ -19,6 +21,7 @@ class PostView extends StatelessWidget {
       appBar: const AppBarWidget(title: "Post View"),
       body: BlocConsumer<CreateDataBloc, CreateDataState>(
         listener: (context, state) {
+          // ! Menangani perubahan "state" untuk menampilkan SnackBars
           if (state is CreateDataLoaded) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -34,7 +37,12 @@ class PostView extends StatelessWidget {
             );
           }
         },
+        listenWhen: (previous, current) {
+          // ! Menjalakan "listener" dengan kondisi berdasarkan "state"
+          return current is CreateDataLoaded || current is CreateDataError;
+        },
         builder: (context, state) {
+          // ! Menampilkan indikator loading jika "data" sedang dimuat
           if (state is CreateDataLoading) {
             return const Center(child: CircularProgressIndicator());
           }
@@ -89,6 +97,8 @@ class PostView extends StatelessWidget {
                 color: Colors.black,
               ),
               const SizedBox(height: 30),
+
+              // ! Menampilkan data "user" yang telah dibuat atau pesan jika data belum ada
               if (state is CreateDataLoaded)
                 ListTile(
                   shape: UnderlineInputBorder(

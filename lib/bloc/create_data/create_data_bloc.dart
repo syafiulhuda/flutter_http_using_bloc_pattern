@@ -18,19 +18,24 @@ class CreateDataBloc extends Bloc<CreateDataEvent, CreateDataState> {
     emit(CreateDataLoading());
 
     try {
+      // ! Endpoint API
       Uri url = Uri.parse("https://reqres.in/api/users");
 
       var response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
+        // ! Konversi data user ke format JSON
         body: event.user.toJson(),
       );
 
+      // ! Memeriksa status respons
       if (response.statusCode == 201) {
         Map<String, dynamic> data = json.decode(response.body);
 
+        // ! Mengurai respons
         CreateNewUser createdUser = CreateNewUser.fromMap(data);
 
+        // ! Emit state loaded dengan data user
         emit(CreateDataLoaded(data: createdUser));
       } else {
         emit(const CreateDataError(message: "Failed to Create Data"));

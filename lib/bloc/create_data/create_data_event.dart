@@ -8,6 +8,7 @@ sealed class CreateDataEvent extends Equatable {
 }
 
 class CreateUser extends CreateDataEvent {
+  // ! Data user yang akan dibuat
   final CreateNewUser user;
 
   const CreateUser({required this.user});
