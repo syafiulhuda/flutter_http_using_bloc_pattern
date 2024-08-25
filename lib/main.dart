@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_http_request/app.dart';
 import 'package:flutter_http_request/bloc/create_data/create_data_bloc.dart';
 import 'package:flutter_http_request/bloc/get_data/get_data_bloc.dart';
+import 'package:flutter_http_request/bloc/update_data/update_data_bloc.dart';
 
 // ! Handling CERTIFICATE_VERIFY_FAILED
 class CertificateVerify extends HttpOverrides {
@@ -33,7 +34,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CreateDataBloc(),
-        )
+        ),
+        BlocProvider(
+          create: (context) => UpdateDataBloc(),
+        ),
       ],
       child: App(),
     );

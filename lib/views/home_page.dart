@@ -11,6 +11,7 @@ class HomePage extends StatelessWidget {
     final List<Map<String, String>> routes = [
       {"name": "Get User", "route": "/get"},
       {"name": "Post Data", "route": "/post"},
+      {"name": "Update Data", "route": "/update"},
     ];
 
     // ! Screen Width

@@ -29,8 +29,8 @@ class GetDataBloc extends Bloc<GetDataEvent, GetDataState> {
     // !
     // ? set up HTTP Method
     try {
-      int randomId = Random().nextInt(12) + 1;
-      Uri url = Uri.parse("https://reqres.in/api/users/$randomId");
+      // int randomId = Random().nextInt(12) + 1;
+      Uri url = Uri.parse("https://reqres.in/api/users/2");
 
       var response = await http.get(url);
 

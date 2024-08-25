@@ -1,16 +1,16 @@
 import 'dart:convert';
 
 class CreateNewUser {
-  // final String id;
+  final String? id;
   final String name;
   final String job;
-  // final String createdAt;
+  final String? createdAt;
 
   CreateNewUser({
-    // required this.id,
+    this.id,
     required this.name,
     required this.job,
-    // required this.createdAt,
+    this.createdAt,
   });
 
   // ! Response Data
@@ -27,16 +27,16 @@ class CreateNewUser {
   String toJson() => json.encode(toMap());
 
   factory CreateNewUser.fromMap(Map<String, dynamic> json) => CreateNewUser(
-        // id: json["id"],
+        id: json["id"],
         name: json["name"],
         job: json["job"],
-        // createdAt: json["createdAt"],
+        createdAt: json["createdAt"],
       );
 
   Map<String, dynamic> toMap() => {
-        // "id": id,
+        "id": id,
         "name": name,
         "job": job,
-        // "createdAt": createdAt,
+        "createdAt": createdAt,
       };
 }
