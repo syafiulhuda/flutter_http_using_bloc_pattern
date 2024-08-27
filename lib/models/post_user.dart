@@ -2,14 +2,14 @@ import 'dart:convert';
 
 class CreateNewUser {
   final String? id;
-  final String name;
-  final String job;
+  final String? name;
+  final String? job;
   final String? createdAt;
 
   CreateNewUser({
     this.id,
-    required this.name,
-    required this.job,
+    this.name,
+    this.job,
     this.createdAt,
   });
 

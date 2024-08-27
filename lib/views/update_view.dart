@@ -138,8 +138,8 @@ class UpdateView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   tileColor: const Color(0xFFE0E0E0),
-                  title: Text(state.data.name),
-                  subtitle: Text(state.data.job),
+                  title: Text(state.data.name!),
+                  subtitle: Text(state.data.job!),
                 )
               else
                 const Text("Data belum ditambahkan"),
@@ -173,8 +173,8 @@ class UpdateView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       tileColor: const Color(0xFFE0E0E0),
-                      title: Text(state.data.name),
-                      subtitle: Text(state.data.job),
+                      title: Text(state.data.name!),
+                      subtitle: Text(state.data.job!),
                     );
                   } else {
                     return const Text("Tidak ada data untuk diperbarui");

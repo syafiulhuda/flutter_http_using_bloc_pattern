@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
       {"name": "Get User", "route": "/get"},
       {"name": "Post Data", "route": "/post"},
       {"name": "Update Data", "route": "/update"},
+      {"name": "Delete Data", "route": "/delete"},
     ];
 
     // ! Screen Width
