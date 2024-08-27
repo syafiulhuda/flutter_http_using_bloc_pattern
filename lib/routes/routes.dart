@@ -4,12 +4,16 @@ import 'package:flutter_http_request/bloc/create_data/create_data_bloc.dart';
 import 'package:flutter_http_request/bloc/delete_user/delete_user_bloc.dart';
 
 import 'package:flutter_http_request/bloc/get_data/get_data_bloc.dart';
+import 'package:flutter_http_request/bloc/login/login_bloc.dart';
+import 'package:flutter_http_request/bloc/register_user/register_user_bloc.dart';
 import 'package:flutter_http_request/bloc/update_data/update_data_bloc.dart';
 import 'package:flutter_http_request/views/delete_view.dart';
 import 'package:flutter_http_request/views/get_view.dart';
 import 'package:flutter_http_request/views/home_page.dart';
+import 'package:flutter_http_request/views/login_view.dart';
 import 'package:flutter_http_request/views/not_found_view.dart';
 import 'package:flutter_http_request/views/post_view.dart';
+import 'package:flutter_http_request/views/register_view.dart';
 import 'package:flutter_http_request/views/update_view.dart';
 
 class AppRouter {
@@ -19,10 +23,26 @@ class AppRouter {
   final CreateDataBloc createDataBloc = CreateDataBloc();
   final UpdateDataBloc updateDataBloc = UpdateDataBloc();
   final DeleteUserBloc deleteUserBloc = DeleteUserBloc();
+  final RegisterUserBloc registerUserBloc = RegisterUserBloc();
+  final LoginBloc loginBloc = LoginBloc();
 
   Route onGenereteRoute(RouteSettings settings) {
     switch (settings.name) {
       case "/":
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider.value(
+            value: loginBloc,
+            child: const LoginView(),
+          ),
+        );
+      case "/register":
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider.value(
+            value: registerUserBloc,
+            child: const RegisterView(),
+          ),
+        );
+      case "/home":
         return MaterialPageRoute(
           builder: (context) => const HomePage(),
         );

@@ -7,6 +7,8 @@ import 'package:flutter_http_request/bloc/create_data/create_data_bloc.dart';
 import 'package:flutter_http_request/bloc/delete_user/delete_user_bloc.dart';
 import 'package:flutter_http_request/bloc/get_data/get_data_bloc.dart';
 import 'package:flutter_http_request/bloc/get_list_data/get_list_data_bloc.dart';
+import 'package:flutter_http_request/bloc/login/login_bloc.dart';
+import 'package:flutter_http_request/bloc/register_user/register_user_bloc.dart';
 import 'package:flutter_http_request/bloc/update_data/update_data_bloc.dart';
 
 // ! Handling CERTIFICATE_VERIFY_FAILED
@@ -31,6 +33,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => RegisterUserBloc(),
+        ),
+        BlocProvider(
+          create: (context) => LoginBloc(),
+        ),
         BlocProvider(
           create: (context) => GetDataBloc(),
         ),
