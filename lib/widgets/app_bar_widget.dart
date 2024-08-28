@@ -2,12 +2,12 @@
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final Widget widget;
   final List<Widget>? actionButton;
 
   const AppBarWidget({
     super.key,
-    required this.title,
+    required this.widget,
     this.actionButton,
   });
 
@@ -16,7 +16,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       centerTitle: true,
       backgroundColor: Colors.pinkAccent,
-      title: Text(title),
+      title: widget,
       actions: actionButton,
     );
   }

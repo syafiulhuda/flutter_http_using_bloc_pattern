@@ -19,7 +19,9 @@ class GetUserView extends StatelessWidget {
     });
 
     return Scaffold(
-      appBar: const AppBarWidget(title: "Get User View"),
+      appBar: const AppBarWidget(
+        widget: Text("Get User View"),
+      ),
       body: BlocConsumer<GetDataBloc, GetDataState>(
         listener: (context, state) {
           if (state is GetDataError) {

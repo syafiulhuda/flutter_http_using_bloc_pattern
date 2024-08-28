@@ -44,7 +44,10 @@ class AppRouter {
         );
       case "/home":
         return MaterialPageRoute(
-          builder: (context) => const HomePage(),
+          builder: (context) => BlocProvider.value(
+            value: loginBloc,
+            child: const HomePage(),
+          ),
         );
       case "/get":
         return MaterialPageRoute(

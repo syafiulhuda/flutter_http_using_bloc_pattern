@@ -19,7 +19,9 @@ class LoginView extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: const AppBarWidget(title: "Login View"),
+      appBar: const AppBarWidget(
+        widget: Text("Login View"),
+      ),
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: mediaQuery * 0.05),

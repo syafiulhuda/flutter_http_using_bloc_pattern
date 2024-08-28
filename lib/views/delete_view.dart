@@ -21,7 +21,7 @@ class DeleteView extends StatelessWidget {
 
     return Scaffold(
       appBar: const AppBarWidget(
-        title: "Delete View",
+        widget: Text("Delete View"),
       ),
       body: MultiBlocListener(
         listeners: [

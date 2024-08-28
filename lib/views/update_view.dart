@@ -19,7 +19,7 @@ class UpdateView extends StatelessWidget {
     TextEditingController jobController = TextEditingController();
 
     return Scaffold(
-      appBar: const AppBarWidget(title: "Update View"),
+      appBar: const AppBarWidget(widget: Text("Update View")),
       body: BlocConsumer<CreateDataBloc, CreateDataState>(
         listener: (context, state) {
           // ! Menangani perubahan "state" untuk menampilkan SnackBars

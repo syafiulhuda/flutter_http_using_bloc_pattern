@@ -4,10 +4,10 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_http_request/models/post_user.dart';
 import 'package:flutter_http_request/models/register_user.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -40,6 +40,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         print('Response body: ${response.body}');
 
         RegisterNewUser loginData = RegisterNewUser.fromMap(data);
+
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+        await preferences.setString('email', event.loginUser.email);
+        // await preferences.setString('password', event.loginUser.password);
 
         emit(LoginSuccess(userLogin: loginData));
       } else {

@@ -16,7 +16,9 @@ class RegisterView extends StatelessWidget {
     TextEditingController passControler = TextEditingController();
 
     return Scaffold(
-      appBar: const AppBarWidget(title: "Register View"),
+      appBar: const AppBarWidget(
+        widget: Text("Register View"),
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),

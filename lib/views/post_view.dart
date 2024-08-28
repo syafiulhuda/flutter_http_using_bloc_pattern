@@ -18,7 +18,9 @@ class PostView extends StatelessWidget {
     TextEditingController jobController = TextEditingController();
 
     return Scaffold(
-      appBar: const AppBarWidget(title: "Post View"),
+      appBar: const AppBarWidget(
+        widget: Text("Post View"),
+      ),
       body: BlocConsumer<CreateDataBloc, CreateDataState>(
         listener: (context, state) {
           // ! Menangani perubahan "state" untuk menampilkan SnackBars
