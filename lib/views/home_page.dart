@@ -1,8 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_http_request/bloc/login/login_bloc.dart';
-import 'package:flutter_http_request/models/register_user.dart';
 import 'package:flutter_http_request/widgets/app_bar_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,11 +10,6 @@ class HomePage extends StatelessWidget {
     return preferences.getString('email');
   }
 
-  // Future<String?> _getPassword() async {
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   return preferences.getString('password');
-  // }
-
   @override
   Widget build(BuildContext context) {
     // ! Routes
@@ -29,7 +20,7 @@ class HomePage extends StatelessWidget {
       {"name": "Delete Data", "route": "/delete"},
     ];
 
-    // make list of image
+    // ! Images
     final List<Map<String, String>> images = [
       {
         "name": "Get Logo",
@@ -61,8 +52,9 @@ class HomePage extends StatelessWidget {
               return const Text("Loading...");
             } else if (snapshot.hasData && snapshot.data != null) {
               String? email = snapshot.data;
-              String displayName =
-                  email != null ? email.split('@')[0] : "Tidak ada data";
+              String displayName = email != null
+                  ? email.split('@')[0].split('.')[0]
+                  : "Tidak ada data";
               return Text("Hai $displayName");
             } else {
               return const Text("Tidak ada data");
@@ -140,31 +132,6 @@ class HomePage extends StatelessWidget {
           );
         },
       ),
-      // ListView.separated(
-      //   padding: EdgeInsets.only(top: padding),
-      //   itemCount: routes.length,
-      //   separatorBuilder: (context, index) => Padding(
-      //     padding: EdgeInsets.symmetric(horizontal: padding),
-      //     child: const Divider(color: Colors.black),
-      //   ),
-      //   itemBuilder: (context, index) {
-      //     final route = routes[index];
-      //     final image = images[index];
-
-      //     return Padding(
-      //       padding: EdgeInsets.symmetric(horizontal: padding),
-      //       child: ListTile(
-      //         leading: Image.asset(image['image']!),
-      //         tileColor: const Color(0xFFE0E0E0),
-      //         splashColor: Colors.blueGrey,
-      //         title: Text(route['name']!),
-      //         onTap: () {
-      //           Navigator.pushNamed(context, route['route']!);
-      //         },
-      //       ),
-      //     );
-      //   },
-      // ),
     );
   }
 }

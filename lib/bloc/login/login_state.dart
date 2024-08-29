@@ -14,7 +14,9 @@ final class LoginLoading extends LoginState {}
 final class LoginSuccess extends LoginState {
   final RegisterNewUser userLogin;
 
-  const LoginSuccess({required this.userLogin});
+  const LoginSuccess({
+    required this.userLogin,
+  });
 
   @override
   List<Object> get props => [userLogin];

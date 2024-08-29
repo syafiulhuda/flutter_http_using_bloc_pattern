@@ -41,9 +41,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
         RegisterNewUser loginData = RegisterNewUser.fromMap(data);
 
+        // ! Menyimpan data email ke shared preferences (snapshot.data)
         SharedPreferences preferences = await SharedPreferences.getInstance();
         await preferences.setString('email', event.loginUser.email);
-        // await preferences.setString('password', event.loginUser.password);
 
         emit(LoginSuccess(userLogin: loginData));
       } else {
