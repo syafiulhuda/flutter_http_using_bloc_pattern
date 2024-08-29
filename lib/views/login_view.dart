@@ -20,7 +20,12 @@ class LoginView extends StatelessWidget {
 
     return Scaffold(
       appBar: const AppBarWidget(
-        widget: Text("Login View"),
+        widget: Text(
+          "Login View",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Center(
         child: Padding(

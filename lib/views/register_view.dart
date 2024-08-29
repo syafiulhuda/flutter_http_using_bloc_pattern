@@ -17,7 +17,12 @@ class RegisterView extends StatelessWidget {
 
     return Scaffold(
       appBar: const AppBarWidget(
-        widget: Text("Register View"),
+        widget: Text(
+          "Register View",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Center(
         child: Padding(

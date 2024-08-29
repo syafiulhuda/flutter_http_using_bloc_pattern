@@ -55,7 +55,12 @@ class HomePage extends StatelessWidget {
               String displayName = email != null
                   ? email.split('@')[0].split('.')[0]
                   : "Tidak ada data";
-              return Text("Hai $displayName");
+              return Text(
+                "Hai $displayName",
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              );
             } else {
               return const Text("Tidak ada data");
             }

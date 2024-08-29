@@ -20,7 +20,12 @@ class GetUserView extends StatelessWidget {
 
     return Scaffold(
       appBar: const AppBarWidget(
-        widget: Text("Get User View"),
+        widget: Text(
+          "Get User View",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: BlocConsumer<GetDataBloc, GetDataState>(
         listener: (context, state) {
@@ -48,20 +53,73 @@ class GetUserView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.network(state.user.data.avatar),
-                  Text(
-                    '${state.user.data.firstName} ${state.user.data.lastName}',
-                    style: const TextStyle(fontSize: 20),
+                  CircleAvatar(
+                    radius: 100,
+                    backgroundImage: NetworkImage(
+                      state.user.data.avatar,
+                    ),
                   ),
-                  Text(state.user.data.email),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "userID: ${state.user.data.id}",
+                        style: const TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      Text(
+                        state.user.data.email,
+                        style: const TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 20),
                   Text(
-                    state.user.support.text,
-                    textAlign: TextAlign.center,
+                    "${state.user.data} ${state.user.data.lastName}",
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  const SizedBox(height: 20),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.attach_money, size: 24),
+                      SizedBox(width: 10),
+                      Text('₹1', style: TextStyle(fontSize: 20)),
+                      SizedBox(width: 20),
+                      Icon(Icons.check, size: 24),
+                      SizedBox(width: 10),
+                      Text('Bank', style: TextStyle(fontSize: 20)),
+                      SizedBox(width: 20),
+                      Icon(Icons.arrow_forward, size: 24),
+                    ],
                   ),
                 ],
               ),
             );
+
+            // Center(
+            //   child: Column(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: [
+            //       Image.network(state.user.data.avatar),
+            //       Text(
+            //         '${state.user.data.firstName} ${state.user.data.lastName}',
+            //         style: const TextStyle(fontSize: 20),
+            //       ),
+            //       Text(state.user.data.email),
+            //       const SizedBox(height: 20),
+            //       Text(
+            //         state.user.support.text,
+            //         textAlign: TextAlign.center,
+            //       ),
+            //     ],
+            //   ),
+            // );
           } else {
             return const Center(child: Text("Click Button Please!"));
           }

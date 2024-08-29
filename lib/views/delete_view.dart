@@ -19,9 +19,16 @@ class DeleteView extends StatelessWidget {
       }
     });
 
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: const AppBarWidget(
-        widget: Text("Delete View"),
+        widget: Text(
+          "Delete View",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: MultiBlocListener(
         listeners: [
@@ -77,26 +84,30 @@ class DeleteView extends StatelessWidget {
               return ListView.builder(
                 itemCount: state.data.data.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: Text(
-                      state.data.data[index].id.toString(),
-                      style: const TextStyle(
-                        fontSize: 20,
+                  return Padding(
+                    padding: EdgeInsets.all(screenWidth * 0.03),
+                    child: ListTile(
+                      tileColor: Colors.greenAccent,
+                      leading: Text(
+                        state.data.data[index].id.toString(),
+                        style: const TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                    title: Text(
-                      "${state.data.data[index].firstName} ${state.data.data[index].lastName}",
-                    ),
-                    subtitle: Text(state.data.data[index].email),
-                    trailing: IconButton(
-                      onPressed: () {
-                        final userID = state.data.data[index].id;
-                        deleteUserBloc.add(DeleteUser(id: userID));
+                      title: Text(
+                        "${state.data.data[index].firstName} ${state.data.data[index].lastName}",
+                      ),
+                      subtitle: Text(state.data.data[index].email),
+                      trailing: IconButton(
+                        onPressed: () {
+                          final userID = state.data.data[index].id;
+                          deleteUserBloc.add(DeleteUser(id: userID));
 
-                        // ! Masukkan ID yang telah dihapus ke dalam SET _deletedIds
-                        getListDataBloc.markAsDeleted(userID);
-                      },
-                      icon: const Icon(Icons.delete),
+                          // ! Masukkan ID yang telah dihapus ke dalam SET _deletedIds
+                          getListDataBloc.markAsDeleted(userID);
+                        },
+                        icon: const Icon(Icons.delete),
+                      ),
                     ),
                   );
                 },

@@ -19,7 +19,12 @@ class PostView extends StatelessWidget {
 
     return Scaffold(
       appBar: const AppBarWidget(
-        widget: Text("Post View"),
+        widget: Text(
+          "Post View",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: BlocConsumer<CreateDataBloc, CreateDataState>(
         listener: (context, state) {
