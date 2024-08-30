@@ -40,9 +40,6 @@ class HomePage extends StatelessWidget {
       },
     ];
 
-    // ! Screen Width
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBarWidget(
         widget: FutureBuilder<String?>(
@@ -70,70 +67,91 @@ class HomePage extends StatelessWidget {
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-          childAspectRatio: 3 / 4,
         ),
         itemCount: routes.length,
         itemBuilder: (context, index) {
           final route = routes[index];
           final image = images[index];
 
-          return Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: screenWidth * 0.03,
-              vertical: screenWidth * 0.03,
-            ),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  route["route"]!,
-                );
-              },
-              child: Card(
-                color: Colors.grey.shade300,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                elevation: 4,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth * 0.03,
-                    vertical: screenWidth * 0.03,
+          return GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                route["route"]!,
+              );
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(
+                      50,
+                    ),
                   ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(16),
-                          ),
-                          child: Image.asset(
-                            image['image']!,
-                            fit: BoxFit.contain,
-                            width: double.infinity,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          route['name']!,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.transparent,
+                    child: Image.asset(
+                      image['image']!,
+                      fit: BoxFit.cover,
+                      width: 80,
+                      height: 80,
+                    ),
                   ),
                 ),
-              ),
+                const SizedBox(height: 10),
+                Text(
+                  route['name']!,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                )
+              ],
             ),
+            // Card(
+            //   color: Colors.grey.shade300,
+            //   shape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.circular(50),
+            //   ),
+            //   elevation: 4,
+            //   child: Padding(
+            //     padding: EdgeInsets.symmetric(
+            //       horizontal: screenWidth * 0.03,
+            //       vertical: screenWidth * 0.03,
+            //     ),
+            //     child: Column(
+            //       mainAxisSize: MainAxisSize.min,
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: [
+            //         Expanded(
+            //           child: ClipRRect(
+            //             borderRadius: const BorderRadius.vertical(
+            //               top: Radius.circular(16),
+            //             ),
+            //             child: Image.asset(
+            //               image['image']!,
+            //               fit: BoxFit.contain,
+            //               width: double.infinity,
+            //             ),
+            //           ),
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.all(8.0),
+            //           child: Text(
+            //             route['name']!,
+            //             textAlign: TextAlign.center,
+            //             style: const TextStyle(
+            //               fontSize: 18,
+            //               fontWeight: FontWeight.bold,
+            //             ),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
           );
         },
       ),

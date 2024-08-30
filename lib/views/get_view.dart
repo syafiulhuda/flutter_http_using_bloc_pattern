@@ -80,7 +80,7 @@ class GetUserView extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    "${state.user.data} ${state.user.data.lastName}",
+                    "${state.user.data.firstName} ${state.user.data.lastName}",
                     style: const TextStyle(fontSize: 20),
                   ),
                   const SizedBox(height: 20),
@@ -101,25 +101,6 @@ class GetUserView extends StatelessWidget {
                 ],
               ),
             );
-
-            // Center(
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Image.network(state.user.data.avatar),
-            //       Text(
-            //         '${state.user.data.firstName} ${state.user.data.lastName}',
-            //         style: const TextStyle(fontSize: 20),
-            //       ),
-            //       Text(state.user.data.email),
-            //       const SizedBox(height: 20),
-            //       Text(
-            //         state.user.support.text,
-            //         textAlign: TextAlign.center,
-            //       ),
-            //     ],
-            //   ),
-            // );
           } else {
             return const Center(child: Text("Click Button Please!"));
           }
